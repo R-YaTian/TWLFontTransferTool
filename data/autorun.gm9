@@ -1,0 +1,64 @@
+@tftt_menu
+set PREVIEW_MODE "TWLFontTransferTool V1.2\nBy R-YaTian"
+labelsel -o -s "Choose an option." tfttopt_*
+goto tftt_menu
+
+@tfttopt_FontTransfer_to_iQue
+set PREVIEW_MODE "TWLFontTransferTool V1.2\nBy R-YaTian\nFontTransfer to iQue\nThis will transfer your TWLFont to iQue."
+if ask "Are you sure to transfer the TWLFont?"
+    if find 0:/gm9/in/TFTT.bin NULL
+        imgmount 0:/gm9/in/TFTT.bin
+        if allow -a 2:
+            cp -n -w 7:/iQue.bin 2:/sys/TWLFontTable.dat
+            echo "Transfer success."
+        else
+            echo "Permissions denied. Aborting."
+        end
+        imgumount
+    else
+        echo "File not found."
+    end
+end
+goto tftt_menu
+
+@tfttopt_FontTransfer_to_Nintendo
+set PREVIEW_MODE "TWLFontTransferTool V1.2\nBy R-YaTian\nFontTransfer to Nintendo\nThis will transfer your TWLFont to Nintendo."
+if ask "Are you sure to transfer the TWLFont?"
+    if find 0:/gm9/in/TFTT.bin NULL
+        imgmount 0:/gm9/in/TFTT.bin
+        if allow -a 2:
+            cp -n -w 7:/Nintendo.bin 2:/sys/TWLFontTable.dat
+            echo "Transfer success"
+        else
+            echo "Permissions denied. Aborting."
+        end
+        imgumount
+    else
+        echo "File not found."
+    end
+end
+goto tftt_menu
+
+@tfttopt_FontTransfer_to_KOR
+set PREVIEW_MODE "TWLFontTransferTool V1.2\nBy R-YaTian\nFontTransfer to KOR\nThis will transfer your TWLFont to KOR."
+if ask "Are you sure to transfer the TWLFont?"
+    if find 0:/gm9/in/TFTT.bin NULL
+        imgmount 0:/gm9/in/TFTT.bin
+        if allow -a 2:
+            cp -n -w 7:/KOR.bin 2:/sys/TWLFontTable.dat
+            echo "Transfer success."
+        else
+            echo "Permissions denied. Aborting."
+        end
+        imgumount
+    else
+        echo "File not found."
+    end
+end
+goto tftt_menu
+
+@tfttopt_Reboot
+reboot
+
+@tfttopt_Power_Off
+poweroff
